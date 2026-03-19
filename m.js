@@ -115,4 +115,43 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTime();
         setInterval(updateTime, 60000); // Atualiza a cada minuto
     }
+
+    // --- 5. Visualizador de Imagens Fullscreen (Lightbox) ---
+    const imageViewer = document.getElementById("image-viewer");
+    const fullImage = document.getElementById("full-image");
+    const closeBtn = document.querySelector(".close-viewer");
+
+    if (imageViewer && track) {
+        // Adiciona evento de clique em todas as imagens da galeria
+        const galleryImages = track.querySelectorAll(".image");
+        galleryImages.forEach(img => {
+            img.addEventListener("click", (e) => {
+                // Só abre se não estiver deslizando a galeria
+                // (Se o valor de arrasto for muito pequeno, consideramos um clique)
+                const isDragging = Math.abs(parseFloat(track.dataset.mouseDownAt) - e.clientX) > 10;
+                
+                if (!isDragging || track.dataset.mouseDownAt === "0") {
+                    imageViewer.style.display = "flex"; // Usar flex para centralizar
+                    fullImage.src = img.src;
+                    document.body.style.overflow = "hidden"; // Trava o scroll do fundo
+                }
+            });
+        });
+
+        // Função para fechar o visualizador
+        const closeViewer = () => {
+            imageViewer.style.display = "none";
+            document.body.style.overflow = "auto"; // Libera o scroll
+        };
+
+        if (closeBtn) closeBtn.onclick = closeViewer;
+        imageViewer.onclick = (e) => {
+            if (e.target === imageViewer) closeViewer();
+        };
+
+        // Fechar com a tecla ESC
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeViewer();
+        });
+    }
 });
