@@ -1,267 +1,185 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Alister</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://kit.fontawesome.com/35a62d8a82.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="m.css">
-	<script src=main.js> </script>
-  <script type="text/javascript">
-    var userAgent = navigator.userAgent.toLowerCase();
-    if (userAgent.indexOf('mobile') !== -1 || userAgent.indexOf('android') !== -1) {
-      alert('For better experience, please use a computer browser.');
-    }
-  </script>
+<html lang="pt-br">
 
+<head>
+  <meta charset="UTF-8">
+  <title>Alister - Portfólio Criativo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fontes e Ícones -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/35a62d8a82.js" crossorigin="anonymous"></script>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" type="text/css" href="m.css">
 </head>
-<body>
+
+<body data-nav="false">
+  <!-- Fundo Estrelo (Galaxy) -->
   <div class="galaxy"></div>
 
-<div class="wrapper">
-    <h1>Highlight</h1>
-		<button class="menu-button" onclick="toggleMenu()">Menu</button>
-    
-	<div class="menu" id="menu">
-    <div id="nav-links">
-    <nav>
-      <a class="nav-link" href="https://www.johnalister.co"> 
-      <h2 class="nav-link-label rubik-font">Gallery</h2>
-      <img class="nav-link-image" src="https://images.unsplash.com/photo-1666091863721-54331a5db52d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" />
-      </a> 
-      <a class="nav-link" href="https://johnalister.itch.io"/>
-      <h2 class="nav-link-label rubik-font">My Games</h2>
-      <img class="nav-link-image" src="dust.png" /></a>
-      <a class="nav-link" href="https://wa.me/5512996304860"/>
-      <h2 class="nav-link-label rubik-font">Contact Me</h2>
-      <img class="nav-link-image" src="wpp.png" /></a>
+  <div class="wrapper">
+    <header class="header">
+      <h1 class="logo wavy-gradient">Alister</h1>
+      <button class="menu-button" onclick="toggleMenu()" aria-label="Abrir Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </header>
+
+    <!-- Menu de Navegação Overlay -->
+    <nav class="menu" id="menu">
+      <div id="nav-links">
+        <a class="nav-link" href="https://www.johnalister.co" target="_blank">
+          <h2 class="nav-link-label">Galeria</h2>
+          <img class="nav-link-image"
+            src="https://images.unsplash.com/photo-1666091863721-54331a5db52d?auto=format&fit=crop&w=400&q=80"
+            alt="Galeria">
+        </a>
+        <a class="nav-link" href="https://johnalister.itch.io" target="_blank">
+          <h2 class="nav-link-label">Meus Jogos</h2>
+          <img class="nav-link-image" src="dust.png" alt="Jogos">
+        </a>
+        <a class="nav-link" href="https://wa.me/5512996304860" target="_blank">
+          <h2 class="nav-link-label">Contato</h2>
+          <img class="nav-link-image" src="wpp.png" alt="WhatsApp">
+        </a>
+      </div>
     </nav>
-    </div>
-  </div>
 
+    <main class="main-content">
+      <!-- Galeria de Imagens Interativa -->
+      <section class="gallery-section">
+        <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+          <img class="image" src="1.png" draggable="false" alt="Trabalho 1">
+          <img class="image" src="2.png" draggable="false" alt="Trabalho 2">
+          <img class="image" src="3.png" draggable="false" alt="Trabalho 3">
+          <img class="image" src="4.png" draggable="false" alt="Trabalho 4">
+          <img class="image" src="5.png" draggable="false" alt="Trabalho 5">
+          <img class="image" src="6.png" draggable="false" alt="Trabalho 6">
+        </div>
+        <p class="instruction">Arraste para explorar meus trabalhos</p>
+      </section>
 
-		<div class="content">
-      <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0"> 
-        <img class="image" src="1.png" style="width:20%;max-width:500px" draggable="false" />
-         <img class="image" src="2.png" style="width:20%;max-width:500px" draggable="false" />
-         <img class="image" src="3.png" style="width:20%;max-width:500px" draggable="false" />
-         <img class="image" src="4.png" style="width:20%;max-width:500px" draggable="false" />
-         <img class="image" src="5.png" style="width:20%;max-width:500px" draggable="false" />
-         <img class="image" src="6.png" style="width:20%;max-width:500px" draggable="false" />
-         <img class="image" src="7.png" style="width:20%;max-width:500px" draggable="false" />
-         <img class="image" src="8.png" style="width:20%;max-width:500px" draggable="false" />
-         <img class="image" src="9.png" style="width:20%;max-width:500px" draggable="false" />
-         <img class="image" src="10.png" style="width:20%;max-width:500px" draggable="false" />
-       </div>
-       <br>  
-     </div>
-     <p>Click and drag to move images. </p> <br><br><br>
-     
-		</div>
-
-    <br> 
-    <div class="details"><h2> John Alister <Span><br> 
-      <p>Self-taught, passionate about languages, people, culture. <br>
-        I saw and lived a little of the world with my own eyes.<br>
-        I have lived in 4 countries over the last few years.<br>
-        Pretty much a self taught polyglot, proud Cat dad, artist and musician in his spare time <br> a curious man who never stopped trying.<br><br>
-    <h2>Educational Background </h2>
-      <p>Currently back to college, i'm studying Game Design, expected to finish in April 2024. <br><br>
-        You can also contact me via e-mail: <br> <p><a href="mailto:iixyzu@gmail.com"></a>iixyzu@gmail.com</a></p>
-        Since last year i'v been working as a Digital Designer for Many Dropshippers.<br>           
-        </Span>
-
-<div class="grid">
-
-          <div class="grid-item">
-            <h2>Item 2</h2>
-            <p></p>
-            <div class="card">
-              <div class="lines"></div>
-              <div class="imgBx">
-                  <img src="wpp.png">
-              </div>
-
-          <div class="content">
-              <div class="details"><h2> John Alister <Span> <br>Dropshipping Designer</Span>
-                  </h2>
-                  <div class="data">
-                      <h3>Currently Availability:<br><span>Available</span></h3>
-                  </div>
-                      <div class="actionBtn">
-                      <button>Buy</button>
-                      </div>
-              </div>
+      <!-- Seção Sobre Mim -->
+      <section class="details">
+        <div class="profile-header">
+          <div id="avatar">
+            <img class="img-layer img1" src="Alisterbg.png" alt="Alister BG">
+            <img class="img-layer img2" src="Alister.png" alt="Alister Personagem">
+            <img class="img-layer img3" src="Alisterscarf.png" alt="Alister Cachecol">
           </div>
-          </div>
-          </div>
-          
-          <div class="grid-item">
-            <h2>Google Merchant Pack</h2>
-            <p>Do you need a brand new account for Google Merchant plus the basic structure for your product? Hit me up!</p>
-            <div class="card">
-              <div class="lines"></div>
-              <div class="imgBx">
-                      <img src="img.jpg">
-              </div>
-          <div class="content">
-              <div class="details"><h2> Bucetovsky<Span> <br>Senior UX/Ui Designer</Span>
-                  </h2>
-                  <div class="data">
-                      <h3>Buy<br><span>Account</span></h3>
-                  
-                  </div>
-                      <div class="actionBtn">
-                      <button>Follow</button>
-                      </div>
-              </div>
+          <div class="bio">
+            <h2>Hello world;</h2>
+            <p>Autodidata, apaixonado por linguagens, pessoas e cultura. Já vi e vivi um pouco do mundo com meus
+              próprios olhos, tendo morado em 4 países nos últimos anos.</p>
+            <p>Poliglota nas horas vagas, orgulhoso pai de gato, programador, músico e artista.
+              Me considero um curioso que nunca parou de tentar e explorar.
+            </p>
+            <div class="skills-list">
+              <span>#GameDesign</span>
+              <span>#CreativeDesign</span>
+              <span>#Musician </span>
+              <span>#Polyglot</span>
+              <span>#Coding</span>
+              <span>#Evolve</span>
+              <span>#JackOfAllTrades</span>
+
             </div>
-            </div>
-          </div>
-          <div class="grid-item">
-            <h2>Item 3</h2>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-            <div class="card">
-              <div class="lines"></div>
-              <div class="imgBx">
-                      <img src="img.jpg">
-              </div>
-          <div class="content">
-              <div class="details"><h2> Analoversky<Span> <br>Senior UX/Ui Designer</Span>
-                  </h2>
-                  <div class="data">
-                      <h3>0134<br><span>Posts</span></h3>
-                  
-                  </div>
-                      <div class="actionBtn">
-                      <button>Follow</button>
-                      </div>
-              </div>
-          </div>
-          </div>
-          </div>
-          <div class="grid-item">
-            <h2>Item 4</h2>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
-            <div class="card">
-              <div class="lines"></div>
-              <div class="imgBx">
-                      <img src="img.jpg">
-              </div>
-          <div class="content">
-              <div class="details"><h2> Hentai<Span> <br>Senior UX/Ui Designer</Span>
-                  </h2>
-                  <div class="data">
-                      <h3>0134<br><span>Posts</span></h3>
-                  
-                  </div>
-                      <div class="actionBtn">
-                      <button>Follow</button>
-                      </div>
-              </div>
-          </div>
-          </div>
           </div>
         </div>
-      </div> 
-      
-  
-    <div id="avatar">  
-        <img class="img1" img src="Alister.png" alt="Alister">
-        <img class="img2" img src="Alister2.png" alt="Alister2">
-        <img class="img3" img src="Alister3.png" alt="Alister3">
-        <h1 class="wavy-gradient">Alister</h1>
+
+        <!-- Grid de Serviços/Produtos -->
+        <section class="services-grid">
+          <!-- Item 1 -->
+          <div class="service-item">
+            <div class="card">
+              <div class="lines"></div>
+              <div class="content">
+                <div class="details">
+                  <div class="details-inner">
+                    <h2>Pixel Artist</h2>
+                    <span>Apaixonado por pixel art desde 'The Mask' do super nintendo.</span>
+                    <div class="data">
+                    </div>
+                    <div class="actionBtn">
+                      <button class="btn-primary">Saber Mais</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="service-text">
+              <h3></h3>
+              <p></p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="service-item">
+            <div class="card">
+              <div class="lines"></div>
+              <div class="content">
+                <div class="details">
+                  <div class="details-inner">
+                    <h2>Músico</h2>
+                    <span>Minha paixão mais antiga e a qual venho me empenhando nos últimos anos/span>
+                      <div class="data">
+                        <h3>No music<br><span>No life</span></h3>
+                      </div>
+                      <div class="actionBtn">
+                        <button class="btn-primary">Saber mais</button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="service-text">
+              <h3></h3>
+              <p></p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="service-item">
+            <div class="card">
+              <div class="lines"></div>
+              <div class="content">
+                <div class="details">
+                  <div class="details-inner">
+                    <h2>Game Design</h2>
+                    <span>Desenvolvimento de conceitos e mecânicas de jogos.</span>
+                    <div class="data">
+                      <h3>Paixão:<br><span>Jogos</span></h3>
+                    </div>
+                    <div class="actionBtn">
+                      <button class="btn-primary">Ver Projetos</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </main>
+
+    <div class="contact-action">
+      <a href="mailto:iixyzu@gmail.com" class="email-link">E-mail me</a>
     </div>
-  <div id="footer">&copy; Alister, 2023. All rights reserved</div>
+    </section>
+
+    <footer id="footer">
+      <p>&copy; Cloud Alister - 2026. Todos os direitos reservados.</p>
+      <div id="datetime"></div>
+    </footer>
   </div>
-</div>
 
-<!-- menu -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="script.js"></script>
-	<script>
-		function toggleMenu() {
-			var menu = document.getElementById("menu");
-			menu.classList.toggle("show-menu");
-		}
-
-
-	function randomNumber(min, max) {
-		return Math.floor(Math.random() * (max - min + 1)) + min
-	}
-
-	const STAR_COUNT = 150
-	let result = ""
-	for(let i = 0; i < STAR_COUNT; i++){
-		result += `${randomNumber(-50, 50)}vw ${randomNumber(-50, 50)}vh ${randomNumber(0, 3)}px ${randomNumber(0, 3)}px #fff,`
-	}
-	console.log(result.substring(0, result.length - 1))
-const track = document.querySelector('#image-track');
-  const images = track.querySelectorAll('.image');
-
-const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
-
-const handleOnUp = () => {
-track.dataset.mouseDownAt = "0";  
-track.dataset.prevPercentage = track.dataset.percentage;
-}
-
-const handleOnMove = e => {
-if(track.dataset.mouseDownAt === "0") return;
-
-const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
-      maxDelta = window.innerWidth / 2;
-
-const percentage = (mouseDelta / maxDelta) * -100,
-      nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
-      nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
-
-track.dataset.percentage = nextPercentage;
-
-track.animate({
-  transform: `translate(${nextPercentage}%, -0%)`
-}, { duration: 1400, fill: "forwards" });
-
-for(const image of track.getElementsByClassName("image")) {
-  image.animate({
-    objectPosition: `${100 + nextPercentage}% center`
-  }, { duration: 1350, fill: "forwards" });
-}
-}
-
-const toggleNav = () => {
-  document.body.dataset.nav = document.body.dataset.nav === "true" ? "false" : "true";
-}
-
-window.onmousedown = e => handleOnDown(e);
-
-window.ontouchstart = e => handleOnDown(e.touches[0]);
-
-window.onmouseup = e => handleOnUp(e);
-
-window.ontouchend = e => handleOnUp(e.touches[0]);
-
-window.onmousemove = e => handleOnMove(e);
-
-window.ontouchmove = e => handleOnMove(e.touches[0]);
-
-
-  const img1 = document.querySelector(".img1");
-  const img2 = document.querySelector(".img2");
-  const img3 = document.querySelector(".img3");
-
-  document.addEventListener("mousemove", function (event) {
-    const xAxis = (window.innerWidth / 2 - event.pageX) / 35;
-    const yAxis = (window.innerHeight / 2 - event.pageY) / 30;
-    img1.style.transform = `perspective(1200px) rotateX(${yAxis}deg) rotateY(${-xAxis}deg)`;
-    img2.style.transform = `perspective(1000px) rotateY(${yAxis * 0.1}deg) rotateY(${-xAxis * 1.1}deg) translateX(-10px)`;
-    img3.style.transform = `perspective(1000px) rotateX(${yAxis * 1.0}deg) rotateY(${-xAxis * 1.0}deg) translateX(-11px)`;
-    
-  });
-
-  // data
-  var today = new Date();
-  var date = today.toLocaleDateString();
-  document.getElementById("datetime").innerHTML = date;
-</script>
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="m.js"></script>
 </body>
+
 </html>

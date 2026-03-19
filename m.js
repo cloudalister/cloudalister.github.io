@@ -1,49 +1,118 @@
+/**
+ * versão: 0.03
+ * cloud
+ */
 
-const track = document.querySelector('#image-track');
-  const images = track.querySelectorAll('.image');
+document.addEventListener('DOMContentLoaded', () => {
 
-const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
+    // --- 1. Lógica do Menu ---
+    // fnc toggle; menu aparece efeito de círculo
+    window.toggleMenu = () => {
+        const menu = document.getElementById("menu");
+        const body = document.body;
 
-const handleOnUp = () => {
-track.dataset.mouseDownAt = "0";  
-track.dataset.prevPercentage = track.dataset.percentage;
-}
+        menu.classList.toggle("show-menu");
 
-const handleOnMove = e => {
-if(track.dataset.mouseDownAt === "0") return;
+        // Alterna o atributo de navegação no body para possíveis estilos extra
+        body.dataset.nav = body.dataset.nav === "true" ? "false" : "true";
 
-const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
-      maxDelta = window.innerWidth / 2;
+        // Troca o ícone se necessário (exemplo usando FontAwesome)
+        const btnIcon = document.querySelector(".menu-button i");
+        if (menu.classList.contains("show-menu")) {
+            btnIcon.classList.replace("fa-bars", "fa-times");
+        } else {
+            btnIcon.classList.replace("fa-times", "fa-bars");
+        }
+    };
 
-const percentage = (mouseDelta / maxDelta) * -100,
-      nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
-      nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+    // --- 2. Galeria de Imagens (Efeito Drag/Slide) ---
+    // img deslizam conforme você arrasta o mouse ou o dedo no celular.
+    const track = document.getElementById("image-track");
+    if (track) {
+        const handleOnDown = e => {
+            track.dataset.mouseDownAt = e.clientX || e.touches[0].clientX;
+        };
 
-track.dataset.percentage = nextPercentage;
+        const handleOnUp = () => {
+            track.dataset.mouseDownAt = "0";
+            track.dataset.prevPercentage = track.dataset.percentage || "0";
+        };
 
-track.animate({
-  transform: `translate(${nextPercentage}%, -50%)`
-}, { duration: 1400, fill: "forwards" });
+        const handleOnMove = e => {
+            if (track.dataset.mouseDownAt === "0") return;
 
-for(const image of track.getElementsByClassName("image")) {
-  image.animate({
-    objectPosition: `${100 + nextPercentage}% center`
-  }, { duration: 1200, fill: "forwards" });
-}
-}
+            const clientX = e.clientX || e.touches[0].clientX;
+            const mouseDelta = parseFloat(track.dataset.mouseDownAt) - clientX;
+            const maxDelta = window.innerWidth / 2;
 
-const toggleNav = () => {
-  document.body.dataset.nav = document.body.dataset.nav === "true" ? "false" : "true";
-}
+            const percentage = (mouseDelta / maxDelta) * -100;
+            const nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage;
+            const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
 
-window.onmousedown = e => handleOnDown(e);
+            track.dataset.percentage = nextPercentage;
 
-window.ontouchstart = e => handleOnDown(e.touches[0]);
+            // Animação suave do track
+            track.animate({
+                transform: `translateX(${nextPercentage}%)`
+            }, { duration: 1200, fill: "forwards", easing: "ease-out" });
 
-window.onmouseup = e => handleOnUp(e);
+            // Animação individual das imagens para efeito de parallax interno
+            const images = track.getElementsByClassName("image");
+            for (const image of images) {
+                image.animate({
+                    objectPosition: `${100 + nextPercentage}% center`
+                }, { duration: 1200, fill: "forwards" });
+            }
+        };
 
-window.ontouchend = e => handleOnUp(e.touches[0]);
+        // Eventos de Mouse
+        window.onmousedown = e => handleOnDown(e);
+        window.onmouseup = () => handleOnUp();
+        window.onmousemove = e => handleOnMove(e);
 
-window.onmousemove = e => handleOnMove(e);
+        // Eventos de Touch (Mobile)
+        window.ontouchstart = e => handleOnDown(e.touches[0]);
+        window.ontouchend = () => handleOnUp();
+        window.ontouchmove = e => handleOnMove(e.touches[0]);
+    }
 
-window.ontouchmove = e => handleOnMove(e.touches[0]);
+    // --- 3. Efeito Parallax no Avatar (Camadas 3D) ---
+    const img1 = document.querySelector(".img1");
+    const img2 = document.querySelector(".img2");
+    const img3 = document.querySelector(".img3");
+
+    if (img1 && img2 && img3) {
+        document.addEventListener("mousemove", (event) => {
+            const { innerWidth, innerHeight } = window;
+            const xAxis = (innerWidth / 2 - event.pageX) / 30; // Sensibilidade X
+            const yAxis = (innerHeight / 2 - event.pageY) / 30; // Sensibilidade Y
+
+            // Camada do Fundo (Alisterbg.png - Verde - Menos movimento)
+            img1.style.transform = `rotateX(${yAxis * 0.4}deg) rotateY(${-xAxis * 0.4}deg) translateZ(-10px)`;
+
+            // Camada do Meio (Alister.png - Personagem principal)
+            img2.style.transform = `rotateX(${yAxis * 0.7}deg) rotateY(${-xAxis * 0.7}deg) translateZ(10px)`;
+
+            // Camada do Topo (Alisterscarf.png - Cachecol - Agora mais colado no corpo)
+            img3.style.transform = `rotateX(${yAxis * 0.9}deg) rotateY(${-xAxis * 0.9}deg) translateZ(20px)`;
+        });
+    }
+
+    // --- 4. Data e Hora ---
+    const dateElement = document.getElementById("datetime");
+    if (dateElement) {
+        const updateTime = () => {
+            const now = new Date();
+            const options = {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            dateElement.innerText = now.toLocaleDateString('pt-BR', options);
+        };
+        updateTime();
+        setInterval(updateTime, 60000); // Atualiza a cada minuto
+    }
+});
